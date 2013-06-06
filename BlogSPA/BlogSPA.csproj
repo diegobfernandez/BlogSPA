@@ -69,10 +69,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.js" />
+    <Content Include="app\blog\admin\blogAdmin.js" />
+    <Content Include="app\blog\blog-view.tpl.html" />
+    <Content Include="app\blog\blog.js" />
+    <Content Include="app\dashboard\dashboard.js" />
+    <Content Include="app\dashboard\dashboard.tpl.html" />
+    <Content Include="app\notifications.tpl.html" />
+    <Content Include="commom\services\notifications.js" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="libs\angular-ui-bootstrap-0.3.0.js" />
-    <Content Include="style\bootstrap-2.3.2.css" />
+    <Content Include="content\style\bootstrap-2.3.2.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +99,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="content\image\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
