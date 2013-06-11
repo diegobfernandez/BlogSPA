@@ -6,14 +6,21 @@
 
 <html ng-app="app" lang="pt-BR">
 <head runat="server">
-	<title>Blog SPA</title>
-	<meta charset="utf-8"/>
-	<%: Styles.Render("~/bundle/style") %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Blog SPA</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <%: Styles.Render("~/bundle/style") %>
 </head>
 <body ng-controller="AppController">
-	<div ng-include="'app/notifications.tpl.html'" class="container-fluid" ng-show="notifications.getCurrent().length"></div>
-	<div ng-view></div>
-	<%: Scripts.Render("~/bundle/libs") %>
-	<%: Scripts.Render("~/bundle/app") %>
+    <div class="content">
+        <div ng-include="'app/_layout/notifications.tpl.html'" ng-show="notifications.getCurrent().length"></div>
+        <div ng-include="'app/_layout/header.tpl.html'"></div>    
+        <main ng-view></main>
+    </div>
+    <%: Scripts.Render("~/bundle/libs") %>
+    <%: Scripts.Render("~/bundle/app") %>
 </body>
 </html>

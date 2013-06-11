@@ -1,6 +1,17 @@
-﻿<h1>{{blog.Title}}</h1>
-<div ng-repeat="post in blog.Posts">
-    <h2>{{post.Title}}</h2>
-    <div>{{post.Text}}</div>
-    <div>{{post.PublicationDate}}</div>
+﻿<div ng-repeat="post in blog.posts" class="blog-view">
+    <article>
+        <a href="#">
+            <header>
+                <div>
+                    <img ng-src="{{post.highlightImage}}" />
+                    <span class="overlay small"></span>
+                </div>
+                <p class="category">{{post.category}}</p>
+                <p class="publishDate">{{post.publicationDate}}</p>
+                <h2>{{post.title}}</h2>
+                <p class="author">{{post.author}}</p>
+            </header>
+            <p>{{post.text}}</p>
+        </a>
+    </article>
 </div>
