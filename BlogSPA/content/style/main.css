@@ -1,0 +1,161 @@
+@font-face {
+    font-family: 'League Gothic';
+    src: url('/fonts/leaguegothic-regular-webfont.eot');
+    src: url('/fonts/leaguegothic-regular-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/leaguegothic-regular-webfont.woff') format('woff'), url('/fonts/leaguegothic-regular-webfont.ttf') format('truetype'), url('/fonts/leaguegothic-regular-webfont.svg#league_gothicregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Josefin Slab";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Josefin Slab"), local("JosefinSlab"), url("http://themes.googleusercontent.com/static/fonts/josefinslab/v3/46aYWdgz-1oFX11flmyEfXhCUOGz7vYGh680lGh-uXM.woff") format("woff");
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    font-size: 102%;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #808080;
+    font-weight: normal;
+    letter-spacing: -1px;
+    line-height: 1em;
+}
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    color: #7A7575;
+    background-color: #1D1D1D;
+    font-family: 'Josefin Slab','League Gothic',Verdana;
+    width: 100%;
+}
+
+.content {
+    margin: 0 0 0 3%;
+}
+
+.main-header {
+    margin: 0 0 24px 0;
+}
+.main-header > a > h1 {
+    font-size: 3em;
+}
+.main-header > nav {
+}
+.main-header > nav > ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+.main-header > nav > ul > li {
+    display: inline;
+}
+
+main {
+    display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    -webkit-flex-wrap: wrap;
+}
+
+.blog-view > article {
+    border: 1px solid #FFFFFF;
+    margin: 0 20px 24px 0;
+    width: 228px;
+    min-width: 228px;
+    max-width: 228px;
+    background-color: #FFFFFF;
+}
+.blog-view > article > a p {
+    padding: 0 15px;
+    margin: 0;
+}
+.blog-view > article > a > header {
+    position: relative;
+    padding-bottom: 10px;
+    background: url("http://www.elegantthemes.com/preview/TheStyle/wp-content/themes/TheStyle/images/entry-top-bg.png") repeat-x scroll left bottom transparent;
+}
+.blog-view > article > a > header > h2 {
+    margin: 0;
+    padding: 0 15px;
+    font-size: 1.8em;
+    text-transform: uppercase;
+}
+.blog-view > article > a > header img {
+    width: 222px;
+    height: 180px;
+    margin: 2px 0 8px 2px;
+}
+.blog-view > article > a > header > .category {
+    color: #FFFFFF;
+    height: 33px;
+    padding: 8px 8px 3px 8px;
+    background-color: #9A1D0D;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+}
+.blog-view > article > a > header > .publishDate {
+    color: #FFFFFF;
+    height: 33px;
+    padding: 8px 8px 3px 8px;
+    background-color: #9A1D0D;
+    position: absolute;
+    right: 2px;
+    top: 33px;
+}
+.blog-view > article > a > header > .author {
+    text-transform: uppercase;
+    font-size: 1.2em;
+}
+.blog-view > article > a > p {
+    padding: 10px 17px 10px;
+    line-height: 19px;
+    padding-bottom: 10px;
+    letter-spacing: 0.03em;
+    font-size: 1em;
+    background: url("/content/image/entry-bottom-bg.png") repeat-x scroll left bottom transparent;
+}
+
+.overlay {
+    display: block;
+    height: 180px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.overlay2 {
+    display: block;
+    height: 180px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.overlay .small {
+    background: url("/content/image/overlay.png") no-repeat scroll 0 0 transparent;
+    width: 222px;
+    margin: 2px 0 8px 2px;
+}
+.overlay.big {
+    background: url("/content/image/overlay.png") no-repeat scroll 0 0 transparent;
+    width: 472px;
+}

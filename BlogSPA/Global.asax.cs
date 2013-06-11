@@ -12,6 +12,7 @@ namespace BlogSPA
         {
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //BundleTable.EnableOptimizations = true;
         }
 
         protected void Application_Error(object sender, EventArgs e)
