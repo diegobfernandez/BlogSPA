@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,13 +44,16 @@
     <Compile Include="Maps\BlogMap.cs" />
     <Compile Include="Maps\CategoryMap.cs" />
     <Compile Include="Maps\CommentMap.cs" />
+    <Compile Include="Maps\CategoryMap.cs" />
     <Compile Include="Maps\PostMap.cs" />
     <Compile Include="Maps\TagMap.cs" />
     <Compile Include="Maps\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
