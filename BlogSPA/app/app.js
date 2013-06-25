@@ -15,11 +15,6 @@
         var blogPromise = blogDatabase.loadBlog();
         blogPromise.then(function (o) {
             $scope.blog = o;
-
-            var postsPromise = blogDatabase.loadPosts();
-            postsPromise.then(function (p) {
-                $scope.blog.posts = p.data;
-            });
         });
         
         $scope.notifications = notifications;
