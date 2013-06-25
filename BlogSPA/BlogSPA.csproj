@@ -124,6 +124,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="content\style\libs\" />
   </ItemGroup>
   <ItemGroup>

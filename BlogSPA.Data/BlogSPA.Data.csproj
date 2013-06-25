@@ -54,11 +54,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\BlogSPA.Domain\BlogSPA.Domain.csproj">
       <Project>{5658d8bc-3376-4a4f-9181-f64165297ca0}</Project>
       <Name>BlogSPA.Domain</Name>

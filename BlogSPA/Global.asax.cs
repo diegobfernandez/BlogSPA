@@ -14,7 +14,7 @@ namespace BlogSPA
     {
         protected void Application_Start(object sender, EventArgs e)
         {
-            //Database.SetInitializer(new DropCreateDatabaseAlways<Context>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //BundleTable.EnableOptimizations = true;
