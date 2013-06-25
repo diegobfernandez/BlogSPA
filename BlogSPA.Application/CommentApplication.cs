@@ -9,43 +9,46 @@ namespace BlogSPA.Application
 {
     public class CommentApplication
     {
+        private static Context _Context = ContextManager<Context>.GetCurrentContext();
+
         public static List<Comment> Get()
         {
-            var dbContext = new Context();
-            return dbContext.Comments.ToList();
+            return _Context.Comments.ToList();
         }
 
         public static Comment Get(Guid id)
         {
-            var dbContext = new Context();
-            return dbContext.Comments.SingleOrDefault(b => b.ID == id);
+            return _Context.Comments.SingleOrDefault(b => b.ID == id);
         }
 
         public static bool Exists(Guid id)
         {
-            var dbContext = new Context();
-            return dbContext.Comments.Any(b => b.ID == id);
+            return _Context.Comments.Any(b => b.ID == id);
         }
 
         public static void Save(Comment comment)
         {
             if (String.IsNullOrWhiteSpace(comment.Text))
-                throw new ArgumentNullException("Title", "Título não pode ser nulo ou vazio");
-            
-            var dbContext = new Context();
+                throw new ArgumentNullException("Text", "Texto não pode ser nulo ou vazio");
 
-            if (dbContext.Comments.Any(b => b.Text == comment.Text))
-                throw new DuplicateWaitObjectException("Blog", "Já existe um blog com esse título");
+            var entry = _Context.Entry(comment);
 
-            bool isNew = comment.ID == Guid.Empty;
-            
-            if (isNew)
+            if (comment.ID == Guid.Empty)
+            {
                 comment.ID = Guid.NewGuid();
+                entry.State = EntityState.Added;
+            }
+            else if (entry.State == EntityState.Detached)
+            {
+                var attachedEntity = _Context.Set<Comment>().Find(comment.ID);
 
-            dbContext.Entry(comment).State = isNew ? EntityState.Added : EntityState.Modified;
+                if (attachedEntity != null)
+                    _Context.Entry(attachedEntity).CurrentValues.SetValues(comment);
+                else
+                    entry.State = EntityState.Modified;
+            }
 
-            dbContext.Comments.Add(comment);
-            dbContext.SaveChanges();
+            _Context.SaveChanges();
         }
     }
 }

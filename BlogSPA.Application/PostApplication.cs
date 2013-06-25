@@ -39,15 +39,26 @@ namespace BlogSPA.Application
             if (validation.Any())
                 throw new InvalidModelState("Blog", validation.Select(v => v.ErrorMessage));
 
-            if (_Context.Posts.Any(b => b.Title == post.Title))
+            bool isNew = post.ID == Guid.Empty;
+            if (isNew && _Context.Posts.Any(b => b.Title == post.Title))
                 throw new DuplicateWaitObjectException("Post", "Já existe um Post com esse título");
 
-            bool isNew = post.ID == Guid.Empty;
-            
-            if (isNew)
-                post.ID = Guid.NewGuid();
+            var entry = _Context.Entry(post);
 
-            _Context.Entry(post).State = isNew ? EntityState.Added : EntityState.Modified;
+            if (isNew)
+            {
+                post.ID = Guid.NewGuid();
+                entry.State = EntityState.Added;
+            }
+            else if (entry.State == EntityState.Detached)
+            {
+                var attachedEntity = _Context.Set<Post>().Find(post.ID);
+
+                if (attachedEntity != null)
+                    _Context.Entry(attachedEntity).CurrentValues.SetValues(post);
+                else
+                    entry.State = EntityState.Modified;
+            }
             
             _Context.SaveChanges();
         }

@@ -11,28 +11,26 @@ namespace BlogSPA.Application
 {
     public class CategoryApplication
     {
+        private static Context _Context = ContextManager<Context>.GetCurrentContext();
+
         public static List<Category> Get()
         {
-            var dbContext = new Context();
-            return dbContext.Categories.ToList();
+            return _Context.Categories.ToList();
         }
 
         public static Category Get(Guid id)
         {
-            var dbContext = new Context();
-            return dbContext.Categories.SingleOrDefault(b => b.ID == id);
+            return _Context.Categories.SingleOrDefault(b => b.ID == id);
         }
 
         public static Category Get(string title)
         {
-            var dbContext = new Context();
-            return dbContext.Categories.SingleOrDefault(b => b.Title.Trim() == title.Trim());
+            return _Context.Categories.SingleOrDefault(b => b.Title.Trim() == title.Trim());
         }
 
         public static bool Exists(Guid id)
         {
-            var dbContext = new Context();
-            return dbContext.Categories.Any(b => b.ID == id);
+            return _Context.Categories.Any(b => b.ID == id);
         }
 
         public static void Save(Category category)
@@ -42,20 +40,29 @@ namespace BlogSPA.Application
             if (validation.Any())
                 throw new InvalidModelState("Category", validation.Select(v => v.ErrorMessage));
 
-            var dbContext = new Context();
+            bool isNew = category.ID == Guid.Empty;
 
-            if (dbContext.Categories.Any(b => b.Title == category.Title))
+            if (isNew && _Context.Categories.Any(b => b.Title.Trim() == category.Title.Trim()))
                 throw new InvalidModelState("Category", "Já existe uma categoria com esse título");
 
-            bool isNew = category.ID == Guid.Empty;
-            
+            var entry = _Context.Entry(category);
+
             if (isNew)
+            {
                 category.ID = Guid.NewGuid();
+                entry.State = EntityState.Added;
+            }
+            else if (entry.State == EntityState.Detached)
+            {
+                var attachedEntity = _Context.Set<Category>().Find(category.ID);
 
-            dbContext.Entry(category).State = isNew ? EntityState.Added : EntityState.Modified;
+                if (attachedEntity != null)
+                    _Context.Entry(attachedEntity).CurrentValues.SetValues(category);
+                else
+                    entry.State = EntityState.Modified;
+            }
 
-            dbContext.Categories.Add(category);
-            dbContext.SaveChanges();
+            _Context.SaveChanges();
         } 
     }
 }

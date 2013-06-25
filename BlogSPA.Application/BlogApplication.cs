@@ -36,7 +36,7 @@ namespace BlogSPA.Application
 
             bool isNew = blog.ID == Guid.Empty;
 
-            if (!isNew && _Context.Blogs.Any(b => b.Title == blog.Title))
+            if (isNew && _Context.Blogs.Any(b => b.Title == blog.Title))
                 throw new DuplicateWaitObjectException("Blog", "Já existe um blog com esse título");
 
             var entry = _Context.Entry(blog);
@@ -48,7 +48,7 @@ namespace BlogSPA.Application
             }
             else if (entry.State == EntityState.Detached)
             {
-                var attachedEntity = _Context.Set<Post>().Find(blog.ID);
+                var attachedEntity = _Context.Set<Blog>().Find(blog.ID);
 
                 if (attachedEntity != null)
                     _Context.Entry(attachedEntity).CurrentValues.SetValues(blog);
@@ -56,6 +56,12 @@ namespace BlogSPA.Application
                     entry.State = EntityState.Modified;
             }
 
+            _Context.SaveChanges();
+        }
+
+        public static void Delete(Blog blog)
+        {
+            _Context.Entry(blog).State = EntityState.Deleted;
             _Context.SaveChanges();
         }
     }
