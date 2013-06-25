@@ -87,6 +87,7 @@
     <Content Include="app\dashboard\dashboard.tpl.html" />
     <Content Include="app\_layout\header.tpl.html" />
     <Content Include="app\_layout\notifications.tpl.html" />
+    <Content Include="commom\services\blogDatabase.js" />
     <Content Include="commom\services\notifications.js" />
     <Content Include="content\image\entry-bottom-bg.png" />
     <Content Include="content\image\entry-top-bg.png" />
@@ -113,6 +114,8 @@
     <Content Include="fonts\leaguegothic-regular-webfont.eot" />
     <Content Include="fonts\leaguegothic-regular-webfont.ttf" />
     <Content Include="fonts\leaguegothic-regular-webfont.woff" />
+    <Content Include="json\postDTO.json" />
+    <Content Include="json\blogDTO.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

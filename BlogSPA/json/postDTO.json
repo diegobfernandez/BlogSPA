@@ -1,0 +1,38 @@
+[
+	{
+		"id"				:	"Guid",
+		"author"			:	"String",
+		"title"				:	"String",
+		"text"				:	"String",
+		"publicationDate"	:	"DateTime",
+		"highlightImage"	:	"http://fakeimg.pl/222x180/",
+		"category"			:	"String"
+	},
+	{
+		"id"				:	"00000000-0000-0000-0000-0000-00000001",
+		"author"			:	"Diego B. Fernandez",
+		"title"				:	"Meu primeiro post.",
+		"text"				:	"Bem vindos ao meu blog. Saudo vocês neste primeiro post com a imagem de um koala",
+		"publicationDate"	:	"2013/06/24",
+		"highlightImage"	:	"http://fakeimg.pl/222x180/",
+		"category"			:	"Animais"
+	},
+	{
+		"id"				:	"00000000-0000-0000-0000-0000-00000002",
+		"author"			:	"Diego B. Fernandez",
+		"title"				:	"Manifestações pelo Brasil.",
+		"text"				:	"Lorem ipsum blablabla blablabla blablabla blablabla blablabla blablabla blablabla",
+		"publicationDate"	:	"2013/06/24",
+		"highlightImage"	:	"http://fakeimg.pl/222x180/",
+		"category"			:	"Brasil"
+	},
+	{
+		"id"				:	"00000000-0000-0000-0000-0000-00000003",
+		"author"			:	"Diego B. Fernandez",
+		"title"				:	"Como fazer miojo",
+		"text"				:	"Deliciosa receita de miojo (macarrão instantâneo)",
+		"publicationDate"	:	"2013/06/25",
+		"highlightImage"	:	"http://fakeimg.pl/222x180/",
+		"category"			:	"Culinária"
+	}
+]

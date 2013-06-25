@@ -2,13 +2,15 @@
     <article>
         <a href="#">
             <header>
-                <div>
+                <div class="img">
                     <img ng-src="{{post.highlightImage}}" />
                     <span class="overlay small"></span>
                 </div>
-                <p class="category">{{post.category}}</p>
-                <p class="publishDate">{{post.publicationDate}}</p>
-                <h2>{{post.title}}</h2>
+                <div class="info">
+                    <span class="category">{{post.category}}</span>
+                    <span class="publishDate">{{post.publicationDate}}</span>
+                </div>
+                <h2 title="{{post.title}}">{{post.title}}</h2>
                 <p class="author">{{post.author}}</p>
             </header>
             <p>{{post.text}}</p>

@@ -83,6 +83,9 @@ main {
     width: 228px;
     min-width: 228px;
     max-width: 228px;
+    min-height: 400px;
+    max-height: 400px;
+    background: url("/content/image/entry-bottom-bg.png") repeat-x scroll left bottom transparent;
     background-color: #FFFFFF;
 }
 .blog-view > article > a p {
@@ -92,6 +95,7 @@ main {
 .blog-view > article > a > header {
     position: relative;
     padding-bottom: 10px;
+    overflow: hidden;
     background: url("http://www.elegantthemes.com/preview/TheStyle/wp-content/themes/TheStyle/images/entry-top-bg.png") repeat-x scroll left bottom transparent;
 }
 .blog-view > article > a > header > h2 {
@@ -103,25 +107,23 @@ main {
 .blog-view > article > a > header img {
     width: 222px;
     height: 180px;
-    margin: 2px 0 8px 2px;
+    margin: 2px 0 0 2px;
+}
+.blog-view > article > a > header > .img {
+    width: 222px;
+    height: 180px;
+    padding: 0;
+}
+.blog-view > article > a > header > .info {
+    background-color: #9A1D0D;
+    padding: 8px 8px 3px 8px;
+    margin: 0 2px 5px 2px;
+    color: #FFFFFF;
 }
 .blog-view > article > a > header > .category {
-    color: #FFFFFF;
-    height: 33px;
-    padding: 8px 8px 3px 8px;
-    background-color: #9A1D0D;
-    position: absolute;
-    right: 2px;
-    top: 2px;
 }
 .blog-view > article > a > header > .publishDate {
-    color: #FFFFFF;
-    height: 33px;
-    padding: 8px 8px 3px 8px;
-    background-color: #9A1D0D;
-    position: absolute;
-    right: 2px;
-    top: 33px;
+    
 }
 .blog-view > article > a > header > .author {
     text-transform: uppercase;
@@ -129,11 +131,14 @@ main {
 }
 .blog-view > article > a > p {
     padding: 10px 17px 10px;
-    line-height: 19px;
     padding-bottom: 10px;
     letter-spacing: 0.03em;
     font-size: 1em;
-    background: url("/content/image/entry-bottom-bg.png") repeat-x scroll left bottom transparent;
+
+    overflow: hidden;
+    line-height: 19px;
+    max-height: 82px;
+    text-overflow: ellipsis;
 }
 
 .overlay {
