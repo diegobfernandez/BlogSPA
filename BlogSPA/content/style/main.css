@@ -44,11 +44,10 @@ body {
     color: #7A7575;
     background-color: #1D1D1D;
     font-family: 'Josefin Slab','League Gothic',Verdana;
-    width: 100%;
 }
 
 .content {
-    margin: 0 0 0 3%;
+    margin: 0 3%;
 }
 
 .main-header {
@@ -56,6 +55,8 @@ body {
 }
 .main-header > a > h1 {
     font-size: 3em;
+    margin:0;
+    margin-bottom:20px;
 }
 .main-header > nav {
 }
@@ -63,10 +64,39 @@ body {
     padding: 0px;
     margin: 0px;
     list-style: none;
+    margin-bottom:10px;
 }
 .main-header > nav > ul > li {
     display: inline;
+    padding-right:20px;
 }
+
+.main-header > nav > ul > li > a
+{
+    color:#FFF;
+}
+
+    .main-header > nav > ul > li > a:hover
+    {
+        color:#C93929;  
+    }
+
+    .main-header .search
+    {
+        text-align:right;
+    }
+
+        .main-header .search input
+        {
+            padding:5px;
+            background-color:#909090;
+        }
+
+            .main-header .search input:focus
+            {
+                background-color:#FFF;
+                outline:0;
+            }
 
 main {
     display: -ms-inline-flexbox;
@@ -77,7 +107,22 @@ main {
     -webkit-flex-wrap: wrap;
 }
 
+
 .blog-view > article {
+    position:relative;
+    border: 1px solid #F0F0F0;
+    margin: 0 20px 24px 0;
+    width: 228px;
+    min-width: 228px;
+    max-width: 228px;
+    min-height: 400px;
+    max-height: 400px;
+    background: url("/content/image/entry-bottom-bg.png") repeat-x scroll left bottom transparent;
+    background-color: #F0F0F0;
+}
+
+.blog-view > article:hover {
+    position:relative;
     border: 1px solid #FFFFFF;
     margin: 0 20px 24px 0;
     width: 228px;
@@ -88,12 +133,12 @@ main {
     background: url("/content/image/entry-bottom-bg.png") repeat-x scroll left bottom transparent;
     background-color: #FFFFFF;
 }
+
 .blog-view > article > a p {
     padding: 0 15px;
     margin: 0;
 }
 .blog-view > article > a > header {
-    position: relative;
     padding-bottom: 10px;
     overflow: hidden;
     background: url("http://www.elegantthemes.com/preview/TheStyle/wp-content/themes/TheStyle/images/entry-top-bg.png") repeat-x scroll left bottom transparent;
@@ -101,8 +146,10 @@ main {
 .blog-view > article > a > header > h2 {
     margin: 0;
     padding: 0 15px;
-    font-size: 1.8em;
+    font-size: 1.4em;
     text-transform: uppercase;
+    min-height:50px;
+    line-height:28px;
 }
 .blog-view > article > a > header img {
     width: 222px;
@@ -119,25 +166,42 @@ main {
     padding: 8px 8px 3px 8px;
     margin: 0 2px 5px 2px;
     color: #FFFFFF;
+    height:35px;
 }
-.blog-view > article > a > header > .category {
+.blog-view > article > a > header .category {
+    float:left;
+    font-family:Tahoma;
+    font-weight:normal;
+    font-size:0.9em;
 }
-.blog-view > article > a > header > .publishDate {
-    
+.blog-view > article > a > header .publishDate {
+    float:right;
+    font-size:0.6em;
+    font-family:Tahoma;
+    line-height:22px;
 }
 .blog-view > article > a > header > .author {
-    text-transform: uppercase;
-    font-size: 1.2em;
+    font-family:Tahoma;
+    position:absolute;
+    background-color:#909090;
+    padding:5px 13px;
+    right:0;
+    top:0;
+    display:block;
+    font-size: 0.7em;
+    color:#FFF;
 }
 .blog-view > article > a > p {
     padding: 10px 17px 10px;
     padding-bottom: 10px;
     letter-spacing: 0.03em;
-    font-size: 1em;
+    font-size: 0.7em;
+    font-family:Tahoma;
+    font-weight:normal;
 
     overflow: hidden;
     line-height: 19px;
-    max-height: 82px;
+    max-height: 100px;
     text-overflow: ellipsis;
 }
 
