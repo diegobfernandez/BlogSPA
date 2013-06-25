@@ -17,6 +17,7 @@ namespace BlogSPA.Data
             Property(p => p.Text)
                 .IsRequired()
                 .IsUnicode();
+
         }
     }
 }

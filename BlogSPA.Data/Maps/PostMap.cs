@@ -49,6 +49,11 @@ namespace BlogSPA.Data
 
             HasMany(p => p.Tags)
                 .WithMany();
+
+            HasMany(p => p.Comments)
+                .WithRequired(p => p.Post)
+                .HasForeignKey(p => p.PostID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace BlogSPA.Data
             HasOptional(p => p.Parent)
                 .WithMany(p => p.Children)
                 .HasForeignKey(p => p.ParentID)
-                .WillCascadeOnDelete();
+                .WillCascadeOnDelete(false);
         }
     }
 }

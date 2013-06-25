@@ -30,7 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\Dependencies\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
@@ -44,7 +48,6 @@
     <Compile Include="Maps\BlogMap.cs" />
     <Compile Include="Maps\CategoryMap.cs" />
     <Compile Include="Maps\CommentMap.cs" />
-    <Compile Include="Maps\CategoryMap.cs" />
     <Compile Include="Maps\PostMap.cs" />
     <Compile Include="Maps\TagMap.cs" />
     <Compile Include="Maps\UserMap.cs" />
@@ -54,6 +57,12 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlogSPA.Domain\BlogSPA.Domain.csproj">
+      <Project>{5658d8bc-3376-4a4f-9181-f64165297ca0}</Project>
+      <Name>BlogSPA.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

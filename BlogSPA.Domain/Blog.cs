@@ -26,5 +26,5 @@ namespace BlogSPA.Domain
             if (String.IsNullOrEmpty(Title))
                 yield return new ValidationResult("Título não pode ser vazio");
 		}
-	}
+    }
 }
