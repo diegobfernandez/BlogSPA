@@ -7,12 +7,14 @@ namespace BlogSPA.WebService.Converters
     {
         public void Convert(BlogDTO source, Blog target)
         {
-            target = new Blog {Title = source.Title};
+            target.Title = source.Title;
+            target.Url = source.Url;
         }
 
         public void ConvertBack(Blog source, BlogDTO target)
         {
-            target = new BlogDTO {Title = source.Title};
+            target.Url = source.Url;
+            target.Title = source.Title;
         }
     }
 }

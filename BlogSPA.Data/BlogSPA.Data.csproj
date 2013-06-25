@@ -37,6 +37,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
+    <Compile Include="ContextManager.cs" />
     <Compile Include="Maps\BlogMap.cs" />
     <Compile Include="Maps\CategoryMap.cs" />
     <Compile Include="Maps\CommentMap.cs" />

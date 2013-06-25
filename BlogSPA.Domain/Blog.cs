@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BlogSPA.Domain.Extenders;
 
 namespace BlogSPA.Domain
 {
@@ -16,8 +14,16 @@ namespace BlogSPA.Domain
 		}
 
 		public Guid ID { get; set; }
-		public string Title { get; set; }
+        public string Title { get; set; }
 		public DateTime CreationDate { get; private set; }
+
+        private string _Url;
+        
+        public string Url 
+        {
+            get { return _Url; }
+            set { _Url = value.Slugify(); }
+        }
 		
 		public virtual List<Post> Posts { get; set; }
 
@@ -25,6 +31,9 @@ namespace BlogSPA.Domain
 		{
             if (String.IsNullOrEmpty(Title))
                 yield return new ValidationResult("Título não pode ser vazio");
+
+            if (String.IsNullOrEmpty(Url))
+                yield return new ValidationResult("Url não pode ser vazio");
 		}
     }
 }

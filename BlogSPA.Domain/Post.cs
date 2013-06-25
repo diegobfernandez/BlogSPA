@@ -21,9 +21,11 @@ namespace BlogSPA.Domain
         public string HighlightImage { get; set; }
         public bool Draft { get; set; }
         public int Views { get; set; }
+        public string Slug { get; set; }
 
         public virtual Blog Blog { get; set; }
         public virtual User Author { get; set; }
+        public virtual Category Category { get; set; }
         public virtual List<Tag> Tags { get; set; }
         public virtual List<Comment> Comments { get; set; }
 
@@ -32,8 +34,8 @@ namespace BlogSPA.Domain
             if (String.IsNullOrWhiteSpace(Title))
                 yield return new ValidationResult("Título não pode ser vazio");
 
-            if (String.IsNullOrWhiteSpace(Title))
-                yield return new ValidationResult("Texto não pode ser vazio");
+            if (String.IsNullOrWhiteSpace(Slug))
+                yield return new ValidationResult("Slug não pode ser vazio");
 
             if (BlogID == Guid.Empty)
                 yield return new ValidationResult("O blog relacionado não pode ser nulo");
@@ -45,7 +47,7 @@ namespace BlogSPA.Domain
                 yield return new ValidationResult("Data de publicção inválida");
 
             if (ID == Guid.Empty && PublicationDate < DateTime.Now)
-                yield return new ValidationResult("A data de publicação para uma nova postagem não pode ser menor hoje.");
+                yield return new ValidationResult("A data de publicação para uma nova postagem não pode ser menor hoje");
         }
     }
 }

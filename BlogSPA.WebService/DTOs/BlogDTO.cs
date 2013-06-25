@@ -1,5 +1,6 @@
 ﻿using System;
 using BlogSPA.Domain;
+
 namespace BlogSPA.WebService.DTOs
 {
     public class BlogDTO
@@ -8,7 +9,7 @@ namespace BlogSPA.WebService.DTOs
         {
             ID = blog.ID;
             Title = blog.Title;
-            AmountPosts = blog.Posts.Count;
+            Url = blog.Url;
         }
 
         public BlogDTO()
@@ -17,7 +18,6 @@ namespace BlogSPA.WebService.DTOs
 
         public Guid ID { get; set; }
         public string Title { get; set; }
-        public int AmountPosts { get; set; }
-
+        public string Url { get; set; }
     }
 }

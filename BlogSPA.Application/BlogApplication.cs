@@ -4,53 +4,59 @@ using BlogSPA.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
+using BlogSPA.Domain.Exceptions;
 
 namespace BlogSPA.Application
 {
     public class BlogApplication
     {
+        private static Context _Context = ContextManager<Context>.GetCurrentContext();
+
         public static List<Blog> Get()
         {
-            var dbContext = new Context();
-            return dbContext.Blogs.ToList();
+            return _Context.Blogs.ToList();
         }
 
         public static Blog Get(Guid id)
         {
-            var dbContext = new Context();
-            return dbContext.Blogs.SingleOrDefault(b => b.ID == id);
+            return _Context.Blogs.SingleOrDefault(b => b.ID == id);
         }
 
         public static bool Exists(Guid id)
         {
-            var dbContext = new Context();
-            return dbContext.Blogs.Any(b => b.ID == id);
+            return _Context.Blogs.Any(b => b.ID == id);
         }
 
         public static void Save(Blog blog)
         {
-            if (String.IsNullOrWhiteSpace(blog.Title))
-                throw new ArgumentNullException("Title", "Título não pode ser nulo ou vazio");
-            
-            var dbContext = new Context();
-
-            if (dbContext.Blogs.Any(b => b.Title == blog.Title))
-                throw new DuplicateWaitObjectException("Blog", "Já existe um blog com esse título");
+            var validation = blog.Validate(new ValidationContext(blog));
+            if (validation.Any())
+                throw new InvalidModelState("Blog", validation.Select(v => v.ErrorMessage));
 
             bool isNew = blog.ID == Guid.Empty;
-            
+
+            if (!isNew && _Context.Blogs.Any(b => b.Title == blog.Title))
+                throw new DuplicateWaitObjectException("Blog", "Já existe um blog com esse título");
+
+            var entry = _Context.Entry(blog);
+
             if (isNew)
+            {
                 blog.ID = Guid.NewGuid();
+                entry.State = EntityState.Added;
+            }
+            else if (entry.State == EntityState.Detached)
+            {
+                var attachedEntity = _Context.Set<Post>().Find(blog.ID);
 
-            dbContext.Entry(blog).State = isNew ? EntityState.Added : EntityState.Modified;
+                if (attachedEntity != null)
+                    _Context.Entry(attachedEntity).CurrentValues.SetValues(blog);
+                else
+                    entry.State = EntityState.Modified;
+            }
 
-            dbContext.Blogs.Add(blog);
-            dbContext.SaveChanges();
-        }
-
-        public static void Put(Guid id, Blog blog)
-        {
-            throw new NotImplementedException();
+            _Context.SaveChanges();
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Linq;
 using BlogSPA.WebService.Converters;
+using BlogSPA.Domain.Exceptions;
 
 namespace BlogSPA.WebService.Controllers
 {
@@ -23,46 +24,57 @@ namespace BlogSPA.WebService.Controllers
         public HttpResponseMessage Get(Guid id)
         {
             var blog = BlogApplication.Get(id);
-            return Request.CreateResponse(HttpStatusCode.OK, blog);
+            var dto = new BlogDTO(blog);
+
+            return Request.CreateResponse(HttpStatusCode.OK, dto);
         }
 
         public HttpResponseMessage Post(BlogDTO blogDTO)
         {
-            var blog = new Blog { Title = blogDTO.Title };
+            if(!ModelState.IsValid)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new Note("Não foi possível adicionar o blog", Note.NoteType.Warning));
 
+            var blog = new Blog();
+
+            var converter = new BlogConverter();
+            converter.Convert(blogDTO, blog);
+            
             try
             {
                 BlogApplication.Save(blog);
-                return Request.CreateResponse(HttpStatusCode.OK, "Blog criado com sucesso");
+                return Request.CreateResponse(HttpStatusCode.OK, new Note("Blog adicionar com sucesso", Note.NoteType.Success));
+            }
+            catch (InvalidModelState ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new Note("Não foi possível adicionar o blog", ex.Details, Note.NoteType.Warning));
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, String.Format("Não foi possível salvar o blog. Erro: {0}", ex.Message));                
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new Note("Não foi possível adicionar o blog", ex.Message, Note.NoteType.Error));
             }
         }
 
         public HttpResponseMessage Put(Guid id, [FromBody]BlogDTO blogDTO)
         {
-            var blog = BlogApplication.Get(blogDTO.ID);
+            var blog = BlogApplication.Get(id);
             if (blog == null)
-                return Request.CreateResponse(HttpStatusCode.NotFound, "Blog não encontrado");
+                return Request.CreateResponse(HttpStatusCode.NotFound, new Note("Blog não encontrado", Note.NoteType.Error));
 
-            var b = new BlogConverter();
-            b.Convert(blogDTO, blog);
+            var converter = new BlogConverter();
+            converter.Convert(blogDTO, blog);
             try
             {
                 BlogApplication.Save(blog);
-                return Request.CreateResponse(HttpStatusCode.OK, "Blog criado com sucesso");
+                return Request.CreateResponse(HttpStatusCode.OK, new Note("Blog salvo com sucesso", Note.NoteType.Success));
+            }
+            catch (InvalidModelState ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new Note("Não foi possível salvar o blog", ex.Details, Note.NoteType.Warning));
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, String.Format("Não foi possível salvar o blog. Erro: {0}", ex.Message));
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new Note("Não foi possível salvar o blog", ex.Message, Note.NoteType.Error));
             }
-        }
-
-        public HttpResponseMessage Delete()
-        {
-            throw new Exception("SE FODEU MANO");
         }
     }
 }
