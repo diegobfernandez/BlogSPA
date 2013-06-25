@@ -81,8 +81,11 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\blog\admin\blogAdmin.js" />
+    <Content Include="app\blog\admin\post-edit.tpl.html" />
     <Content Include="app\blog\blog-view.tpl.html" />
     <Content Include="app\blog\blog.js" />
+    <Content Include="app\blog\postView\postView.js" />
+    <Content Include="app\blog\postView\postView.tpl.html" />
     <Content Include="app\_layout\header.tpl.html" />
     <Content Include="app\_layout\notifications.tpl.html" />
     <Content Include="commom\services\blogDatabase.js" />

@@ -5,7 +5,7 @@ webService.url = '/api';
 (function () {
     "use strict";
     
-    var app = angular.module('app', ['app.blog', 'services.notifications', 'services.blogDB']);
+    var app = angular.module('app', ['app.blog', 'app.postView', 'services.notifications', 'services.blogDB']);
 
     app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         //$locationProvider.html5Mode(true);
@@ -29,7 +29,6 @@ webService.url = '/api';
             var blogPromise = blogDB.loadBlog();
             blogPromise.success(function (data) {
                 $scope.blog = data;
-                console.log($scope.blog);
             });
         }
 

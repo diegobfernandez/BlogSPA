@@ -22,8 +22,8 @@
             return $http.get(resourcePath);
         }
 
-        function loadPost(postID) {
-            return $http.get(resourcePath + '/' + postID);
+        function loadPost(slug) {
+            return $http.get(resourcePath + '?slug=' + slug);
         }
 
         function createPost(post) {

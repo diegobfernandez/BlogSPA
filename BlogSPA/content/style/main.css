@@ -163,6 +163,9 @@ main
             float: left;
             font-size: 1em;
             line-height: 25px;
+            white-space: nowrap;
+            max-width: 50px;
+            text-overflow: ellipsis;
         }
 
         .blog-view > article > a > header .publishDate
