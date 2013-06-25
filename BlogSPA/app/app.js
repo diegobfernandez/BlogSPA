@@ -9,17 +9,19 @@
     }]);
 
     app.controller('AppController', ['$scope', 'notifications', 'blogDatabase', function ($scope, notifications, blogDatabase) {
-        
-        var blog = { id: '123', title: 'Blog Teste', url: 'http://localhost:56271/#/dashboard', imgUrl: 'http://localhost:56271/content/image/glasses.png', posts: [] };
+        $scope.blog = {};
+        $scope.blog.posts = [];
 
-        var promise = blogDatabase.loadPosts();
-        console.log(promise);
-        promise.then(function (p) {
-            blog.posts = p.data;
+        var blogPromise = blogDatabase.loadBlog();
+        blogPromise.then(function (o) {
+            $scope.blog = o;
+
+            var postsPromise = blogDatabase.loadPosts();
+            postsPromise.then(function (p) {
+                $scope.blog.posts = p.data;
+            });
         });
         
-        $scope.blog = blog;
-
         $scope.notifications = notifications;
 
         $scope.removeNotification = function (notification) {
