@@ -1,4 +1,5 @@
-@font-face {
+@font-face
+{
     font-family: 'League Gothic';
     src: url('/fonts/leaguegothic-regular-webfont.eot');
     src: url('/fonts/leaguegothic-regular-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/leaguegothic-regular-webfont.woff') format('woff'), url('/fonts/leaguegothic-regular-webfont.ttf') format('truetype'), url('/fonts/leaguegothic-regular-webfont.svg#league_gothicregular') format('svg');
@@ -6,14 +7,16 @@
     font-style: normal;
 }
 
-@font-face {
+@font-face
+{
     font-family: "Josefin Slab";
     font-style: normal;
     font-weight: 400;
     src: local("Josefin Slab"), local("JosefinSlab"), url("http://themes.googleusercontent.com/static/fonts/josefinslab/v3/46aYWdgz-1oFX11flmyEfXhCUOGz7vYGh680lGh-uXM.woff") format("woff");
 }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend
+{
     background: none repeat scroll 0 0 transparent;
     border: 0 none;
     font-size: 102%;
@@ -22,83 +25,70 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6
+{
     color: #808080;
     font-weight: normal;
     letter-spacing: -1px;
     line-height: 1em;
 }
 
-* {
+*
+{
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-a {
+a
+{
     color: inherit;
     text-decoration: none;
 }
 
-body {
+body
+{
     color: #7A7575;
     background-color: #1D1D1D;
     font-family: 'Josefin Slab','League Gothic',Verdana;
 }
 
-.content {
+.content
+{
     margin: 0 3%;
 }
 
-.main-header {
+.main-header
+{
     margin: 0 0 24px 0;
 }
-.main-header > a > h1 {
-    font-size: 3em;
-    margin:0;
-    margin-bottom:20px;
-}
-.main-header > nav {
-}
-.main-header > nav > ul {
-    padding: 0px;
-    margin: 0px;
-    list-style: none;
-    margin-bottom:10px;
-}
-.main-header > nav > ul > li {
-    display: inline;
-    padding-right:20px;
-}
 
-.main-header > nav > ul > li > a
-{
-    color:#FFF;
-}
-
-    .main-header > nav > ul > li > a:hover
+    .main-header > a > h1
     {
-        color:#C93929;  
+        font-size: 3em;
+        margin: 0;
+        margin-bottom: 20px;
     }
 
     .main-header .search
     {
-        text-align:right;
+        text-align: right;
     }
 
         .main-header .search input
         {
-            padding:5px;
-            background-color:#909090;
+            padding: 5px;
+            background-color: #FFFFFF;
+            border: none;
         }
 
             .main-header .search input:focus
             {
-                background-color:#FFF;
-                outline:0;
+                outline: 0;
             }
 
-main {
+main
+{
     display: -ms-inline-flexbox;
     display: -webkit-inline-flex;
     display: inline-flex;
@@ -108,123 +98,130 @@ main {
 }
 
 
-.blog-view > article {
-    position:relative;
+.blog-view > article
+{
+    position: relative;
     border: 1px solid #F0F0F0;
     margin: 0 20px 24px 0;
     width: 228px;
     min-width: 228px;
     max-width: 228px;
-    min-height: 400px;
-    max-height: 400px;
+    min-height: 410px;
+    max-height: 410px;
     background: url("/content/image/entry-bottom-bg.png") repeat-x scroll left bottom transparent;
     background-color: #F0F0F0;
 }
 
-.blog-view > article:hover {
-    position:relative;
-    border: 1px solid #FFFFFF;
-    margin: 0 20px 24px 0;
-    width: 228px;
-    min-width: 228px;
-    max-width: 228px;
-    min-height: 400px;
-    max-height: 400px;
-    background: url("/content/image/entry-bottom-bg.png") repeat-x scroll left bottom transparent;
-    background-color: #FFFFFF;
-}
+    .blog-view > article > a p
+    {
+        padding: 0 15px;
+        margin: 0;
+    }
 
-.blog-view > article > a p {
-    padding: 0 15px;
-    margin: 0;
-}
-.blog-view > article > a > header {
-    padding-bottom: 10px;
-    overflow: hidden;
-    background: url("http://www.elegantthemes.com/preview/TheStyle/wp-content/themes/TheStyle/images/entry-top-bg.png") repeat-x scroll left bottom transparent;
-}
-.blog-view > article > a > header > h2 {
-    margin: 0;
-    padding: 0 15px;
-    font-size: 1.4em;
-    text-transform: uppercase;
-    min-height:50px;
-    line-height:28px;
-}
-.blog-view > article > a > header img {
-    width: 222px;
-    height: 180px;
-    margin: 2px 0 0 2px;
-}
-.blog-view > article > a > header > .img {
-    width: 222px;
-    height: 180px;
-    padding: 0;
-}
-.blog-view > article > a > header > .info {
-    background-color: #9A1D0D;
-    padding: 8px 8px 3px 8px;
-    margin: 0 2px 5px 2px;
-    color: #FFFFFF;
-    height:35px;
-}
-.blog-view > article > a > header .category {
-    float:left;
-    font-family:Tahoma;
-    font-weight:normal;
-    font-size:0.9em;
-}
-.blog-view > article > a > header .publishDate {
-    float:right;
-    font-size:0.6em;
-    font-family:Tahoma;
-    line-height:22px;
-}
-.blog-view > article > a > header > .author {
-    font-family:Tahoma;
-    position:absolute;
-    background-color:#909090;
-    padding:5px 13px;
-    right:0;
-    top:0;
-    display:block;
-    font-size: 0.7em;
-    color:#FFF;
-}
-.blog-view > article > a > p {
-    padding: 10px 17px 10px;
-    padding-bottom: 10px;
-    letter-spacing: 0.03em;
-    font-size: 0.7em;
-    font-family:Tahoma;
-    font-weight:normal;
+    .blog-view > article > a > header
+    {
+        padding-bottom: 10px;
+        overflow: hidden;
+        background: url("http://www.elegantthemes.com/preview/TheStyle/wp-content/themes/TheStyle/images/entry-top-bg.png") repeat-x scroll left bottom transparent;
+    }
 
-    overflow: hidden;
-    line-height: 19px;
-    max-height: 100px;
-    text-overflow: ellipsis;
-}
+        .blog-view > article > a > header > h2
+        {
+            margin: 0;
+            padding: 5px 15px;
+            font-size: 1.4em;
+            text-transform: uppercase;
+            height: 56px;
+            line-height: 28px;
+        }
 
-.overlay {
+        .blog-view > article > a > header img
+        {
+            width: 222px;
+            height: 180px;
+            margin: 2px 0 0 2px;
+        }
+
+        .blog-view > article > a > header > .img
+        {
+            width: 222px;
+            height: 180px;
+            padding: 0;
+        }
+
+        .blog-view > article > a > header > .info
+        {
+            background-color: #9A1D0D;
+            padding: 8px 8px 3px 8px;
+            margin: 0 2px 5px 2px;
+            color: #FFFFFF;
+            height: 35px;
+        }
+
+        .blog-view > article > a > header .category
+        {
+            float: left;
+            font-size: 1em;
+            line-height: 25px;
+        }
+
+        .blog-view > article > a > header .publishDate
+        {
+            float: right;
+            font-size: 0.9em;
+            line-height: 25px;
+        }
+
+        .blog-view > article > a > header > .author
+        {
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            padding: 5px 13px 3px 13px;
+            background-color: #9A1D0D;
+            color: #FFFFFF;
+            font-size: 0.8em;
+        }
+
+    .blog-view > article > a > p
+    {
+        padding: 10px 17px 10px;
+        padding-bottom: 10px;
+        letter-spacing: 0.03em;
+        font-size: 1em;
+        overflow: hidden;
+        line-height: 19px;
+        max-height: 100px;
+        text-overflow: ellipsis;
+    }
+
+.overlay
+{
     display: block;
     height: 180px;
     position: absolute;
     left: 0;
     top: 0;
 }
-.overlay2 {
+
+.overlay2
+{
     display: block;
     height: 180px;
     position: absolute;
     left: 0;
     top: 0;
 }
-.overlay .small {
+
+.overlay .small
+{
     background: url("/content/image/overlay.png") no-repeat scroll 0 0 transparent;
     width: 222px;
     margin: 2px 0 8px 2px;
 }
-.overlay.big {
+
+.overlay.big
+{
     background: url("/content/image/overlay.png") no-repeat scroll 0 0 transparent;
     width: 472px;
 }
