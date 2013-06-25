@@ -4,6 +4,8 @@ using BlogSPA.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BlogSPA.Domain.Exceptions;
+using System.ComponentModel.DataAnnotations;
 
 namespace BlogSPA.Application
 {
@@ -28,8 +30,9 @@ namespace BlogSPA.Application
 
         public static void Save(Comment comment)
         {
-            if (String.IsNullOrWhiteSpace(comment.Text))
-                throw new ArgumentNullException("Text", "Texto não pode ser nulo ou vazio");
+            var validation = comment.Validate(new ValidationContext(comment));
+            if (validation.Any())
+                throw new InvalidModelState("Comment", validation.Select(v => v.ErrorMessage));
 
             var entry = _Context.Entry(comment);
 
@@ -48,6 +51,12 @@ namespace BlogSPA.Application
                     entry.State = EntityState.Modified;
             }
 
+            _Context.SaveChanges();
+        }
+
+        public static void Delete(Comment comment)
+        {
+            _Context.Entry(comment).State = EntityState.Deleted;
             _Context.SaveChanges();
         }
     }

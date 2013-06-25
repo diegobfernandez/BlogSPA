@@ -1,5 +1,7 @@
-﻿using BlogSPA.Domain;
+﻿using BlogSPA.Application;
+using BlogSPA.Domain;
 using BlogSPA.WebService.DTOs;
+using UsersPA.Application;
 
 namespace BlogSPA.WebService.Converters
 {
@@ -10,7 +12,8 @@ namespace BlogSPA.WebService.Converters
             target.Title = source.Title;
             target.Text = source.Text;
             target.PublicationDate = source.PublicationDate;
-            target.Title = source.Title;
+            target.Category = CategoryApplication.Get(source.Category);
+            target.Author = UserApplication.Get(source.Author);
         }
 
         public void ConvertBack(Post source, PostDTO target)
@@ -18,7 +21,8 @@ namespace BlogSPA.WebService.Converters
             target.Title = source.Title;
             target.Text = source.Text;
             target.PublicationDate = source.PublicationDate;
-            target.Title = source.Title;
+            target.Category = source.Category.Title;
+            target.Author = source.Author.Name;
         }
     }
 }

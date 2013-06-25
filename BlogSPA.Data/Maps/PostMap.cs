@@ -47,9 +47,6 @@ namespace BlogSPA.Data
                 .WithMany(b => b.Posts)
                 .HasForeignKey(p => p.BlogID);
 
-            HasMany(p => p.Tags)
-                .WithMany();
-
             HasMany(p => p.Comments)
                 .WithRequired(p => p.Post)
                 .HasForeignKey(p => p.PostID)

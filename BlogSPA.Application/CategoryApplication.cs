@@ -63,6 +63,12 @@ namespace BlogSPA.Application
             }
 
             _Context.SaveChanges();
-        } 
+        }
+
+        public static void Delete(Category category)
+        {
+            _Context.Entry(category).State = EntityState.Deleted;
+            _Context.SaveChanges();
+        }
     }
 }

@@ -15,28 +15,21 @@ namespace BlogSPA.WebService.Controllers
 {
 	public class BlogController : ApiController
 	{
-		public List<BlogDTO> Get()
+		public BlogDTO Get()
 		{
-			var blogs = BlogApplication.Get();
-			return blogs.Select(b => new BlogDTO(b)).ToList();
-		}
+			var blog = BlogApplication.Get().FirstOrDefault();
 
-		public Blog Get(Guid id)
-		{
-			var blog = BlogApplication.Get(id);
-			if (blog == null)
-				throw new HttpResponseException(HttpStatusCode.NotFound);
+            if (blog == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
 
-			return blog;
+            var dto = new BlogDTO(blog);
+
+            return dto;
 		}
 
 		public HttpResponseMessage Post(BlogDTO blogDTO)
 		{
-			if (!ModelState.IsValid)
-				return Request.CreateResponse(HttpStatusCode.BadRequest, new Note("Não foi possível adicionar o blog", Note.NoteType.Warning));
-
-			var blog = new Blog();
-
+            var blog = new Blog();
 			var converter = new BlogConverter();
 			converter.Convert(blogDTO, blog);
 

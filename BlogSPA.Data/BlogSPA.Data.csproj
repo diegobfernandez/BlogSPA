@@ -51,7 +51,6 @@
     <Compile Include="Maps\CategoryMap.cs" />
     <Compile Include="Maps\CommentMap.cs" />
     <Compile Include="Maps\PostMap.cs" />
-    <Compile Include="Maps\TagMap.cs" />
     <Compile Include="Maps\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

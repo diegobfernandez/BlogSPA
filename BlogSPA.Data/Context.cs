@@ -18,7 +18,6 @@ namespace BlogSPA.Data
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Tag> Tags { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Category> Categories { get; set; }
 
@@ -29,7 +28,6 @@ namespace BlogSPA.Data
             modelBuilder.Configurations.Add(new BlogMap());
             modelBuilder.Configurations.Add(new PostMap());
             modelBuilder.Configurations.Add(new UserMap());
-            modelBuilder.Configurations.Add(new TagMap());
             modelBuilder.Configurations.Add(new CommentMap());
             modelBuilder.Configurations.Add(new CategoryMap());
 

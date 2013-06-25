@@ -13,9 +13,14 @@ namespace BlogSPA.Application
     {
         private static Context _Context = ContextManager<Context>.GetCurrentContext();
 
-        public static List<Post> Get()
+        public static List<Post> Get(int skip = 0, int take = 0)
         {
-            return _Context.Posts.ToList();
+            var query = _Context.Posts.OrderByDescending(p => p.PublicationDate).Skip(skip) as IQueryable<Post>;
+
+            if (take > 0)
+                query = query.Take(take);
+
+            return query.ToList();
         }
 
         public static Post Get(Guid id)
@@ -33,16 +38,18 @@ namespace BlogSPA.Application
             return _Context.Posts.Any(b => b.ID == id);
         }
 
-        public static void Save(Post post)
+        public static void Save(Post post, Guid? blogID = null)
         {
+            if (blogID.HasValue)
+                post.Blog = BlogApplication.Get(blogID.Value);
+
+            post.Slug = post.Title;
+
             var validation = post.Validate(new ValidationContext(post));
             if (validation.Any())
-                throw new InvalidModelState("Blog", validation.Select(v => v.ErrorMessage));
+                throw new InvalidModelState("Post", validation.Select(v => v.ErrorMessage));
 
             bool isNew = post.ID == Guid.Empty;
-            if (isNew && _Context.Posts.Any(b => b.Title == post.Title))
-                throw new DuplicateWaitObjectException("Post", "Já existe um Post com esse título");
-
             var entry = _Context.Entry(post);
 
             if (isNew)
@@ -60,6 +67,12 @@ namespace BlogSPA.Application
                     entry.State = EntityState.Modified;
             }
             
+            _Context.SaveChanges();
+        }
+
+        public static void Delete(Post post)
+        {
+            _Context.Entry(post).State = EntityState.Deleted;
             _Context.SaveChanges();
         }
     }

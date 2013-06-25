@@ -7,7 +7,7 @@ namespace BlogSPA.Domain
     {
         public Guid ID { get; set; }
         public string Name { get; set; }
-        public string Email { get; set; }
+        public string Username { get; set; }
         public string Password { get; set; }
         public bool Admin { get; set; }
 
@@ -16,11 +16,11 @@ namespace BlogSPA.Domain
             if (String.IsNullOrWhiteSpace(Name))
                 yield return new ValidationResult("Nome não pode ser vazio");
 
-            if (String.IsNullOrWhiteSpace(Email))
+            if (String.IsNullOrWhiteSpace(Username))
                 yield return new ValidationResult("Email não pode ser vazio");
 
             if (String.IsNullOrWhiteSpace(Password))
-                yield return new ValidationResult("Senha não pode ser vazio");
+                yield return new ValidationResult("Senha não pode ser vazia");
         }
     }
 }

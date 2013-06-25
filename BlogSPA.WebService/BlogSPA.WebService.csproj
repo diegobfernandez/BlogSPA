@@ -71,15 +71,16 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Converters\BlogConverter.cs" />
     <Compile Include="Converters\CategoryConverter.cs" />
+    <Compile Include="Converters\UserConverter.cs" />
     <Compile Include="Converters\PostConverter.cs" />
     <Compile Include="Converters\IConverter.cs" />
     <Compile Include="DTOs\BlogDTO.cs" />
     <Compile Include="DTOs\PostDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
-    <Compile Include="DTOs\TagDTO.cs" />
     <Compile Include="DTOs\CommentDTO.cs" />
     <Compile Include="DTOs\CategoryDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

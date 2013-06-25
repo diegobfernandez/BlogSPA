@@ -49,7 +49,6 @@
     <Compile Include="PostApplication.cs" />
     <Compile Include="UserApplication.cs" />
     <Compile Include="CategoryApplication.cs" />
-    <Compile Include="TagApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

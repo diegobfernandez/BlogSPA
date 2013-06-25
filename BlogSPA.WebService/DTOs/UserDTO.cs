@@ -6,7 +6,8 @@ namespace BlogSPA.WebService.DTOs
     {
         public UserDTO(User user)
         {
-
+            Name = user.Name;
+            Username = user.Username;
         }
 
         public UserDTO()
@@ -14,8 +15,8 @@ namespace BlogSPA.WebService.DTOs
         }
 
         public Guid ID { get; set; }
-        public string Title { get; set; }
-        public int AmountPosts { get; set; }
-
+        public string Name { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }

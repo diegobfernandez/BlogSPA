@@ -14,19 +14,14 @@ namespace BlogSPA.Domain
         }
 
         public Guid ID { get; set; }
-        public Guid AuthorID { get; set; }
         public Guid PostID { get; set; }
         public string Text { get; set; }
         public DateTime CreationDate { get; private set; }
 
-        public virtual User Author { get; set; }
         public virtual Post Post { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (AuthorID == Guid.Empty)
-                yield return new ValidationResult("O autor não pode ser vazio");
-
             if (PostID == Guid.Empty)
                 yield return new ValidationResult("A postagem relacionada não pode ser nula");
 

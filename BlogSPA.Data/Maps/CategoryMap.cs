@@ -17,11 +17,6 @@ namespace BlogSPA.Data
 
             Property(p => p.Title)
                 .IsRequired();
-
-            HasOptional(p => p.Parent)
-                .WithMany(p => p.Children)
-                .HasForeignKey(p => p.ParentID)
-                .WillCascadeOnDelete(false);
         }
     }
 }
