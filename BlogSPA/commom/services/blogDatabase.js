@@ -1,64 +1,39 @@
 ﻿(function (ng) {
     "use strict";
     
-    var module = ng.module('services.blogDatabase', []);
-    module.factory('blogDatabase', ['$http', '$q', '$timeout', function ($http, $q, $timeout) {
+    var module = ng.module('services.blogDB', []);
+
+    module.factory('blogDB.blog', ['$http', '$q', '$timeout', function ($http, $q, $timeout) {
+        var resourcePath = webService.url + '/blog';
+
         function loadBlog() {
-            //return $http.get('/json/postDTO.json');
-
-            //return $http.get('/api/post');
-
-            var deferred = $q.defer();
-
-            $timeout(function () {
-                deferred.resolve({
-                    id: "1",
-                    title: "Semana da Computação",
-                    posts: []
-                });
-            }, 2000);
-
-            return deferred.promise;
-        }
-
-        function loadPosts() {
-            //return $http.get('/json/blogDTO.json');
-            
-            //return $http.get('/api/blog');
-
-            var deferred = $q.defer();
-
-            $timeout(function () {
-                deferred.resolve({
-                    data:
-                        [{ id: '123', author: 'Diego B. Fernandez', title: 'Post 1', text: 'Texto do Post 1', publicationDate: '05/05/2013', highlightImage: 'http://fakeimg.pl/222x180/', category: 'Teste' }
-                        , { id: '124', author: 'Diego B. Fernandez', title: 'Post 2 titulo longo', text: 'Texto do Post 2', publicationDate: '05/05/2013', highlightImage: 'http://fakeimg.pl/222x180/', category: 'Teste' }
-                        , { id: '125', author: 'Diego B. Fernandez', title: 'Post 3', text: 'Texto do Post 3 Texto do Post 3 Texto do Post 3 Texto do Post 3 Texto do Post 3 Texto do Post 3 Texto do Post 3 Texto do Post 4 Texto do Post 5 Texto do Post 6', publicationDate: '05/05/2013', highlightImage: 'http://fakeimg.pl/222x180/', category: 'Teste' }
-                        , { id: '126', author: 'Diego B. Fernandez', title: 'Post 4', text: 'Texto do Post 4', publicationDate: '05/05/2013', highlightImage: 'http://fakeimg.pl/222x180/', category: 'Teste' }
-                        , { id: '126', author: 'Diego B. Fernandez', title: 'Post 4', text: 'Texto do Post 4', publicationDate: '05/05/2013', highlightImage: 'http://fakeimg.pl/222x180/', category: 'Teste' }
-                        , { id: '126', author: 'Diego B. Fernandez', title: 'Post 4', text: 'Texto do Post 4', publicationDate: '05/05/2013', highlightImage: 'http://fakeimg.pl/222x180/', category: 'Teste' }
-                        , { id: '126', author: 'Diego B. Fernandez', title: 'Post 4', text: 'Texto do Post 4', publicationDate: '05/05/2013', highlightImage: 'http://fakeimg.pl/222x180/', category: 'Teste' }
-                        , { id: '126', author: 'Diego B. Fernandez', title: 'Post 4', text: 'Texto do Post 4', publicationDate: '05/05/2013', highlightImage: 'http://fakeimg.pl/222x180/', category: 'Teste' }
-                        , { id: '126', author: 'Diego B. Fernandez', title: 'Post 4', text: 'Texto do Post 4', publicationDate: '05/05/2013', highlightImage: 'http://fakeimg.pl/222x180/', category: 'Teste' }
-                        , { id: '126', author: 'Diego B. Fernandez', title: 'Post 4', text: 'Texto do Post 4', publicationDate: '05/05/2013', highlightImage: 'http://fakeimg.pl/222x180/', category: 'Teste' }
-                        , { id: '126', author: 'Diego B. Fernandez', title: 'Post 4', text: 'Texto do Post 4', publicationDate: '05/05/2013', highlightImage: 'http://fakeimg.pl/222x180/', category: 'Teste' }
-                        , { id: '126', author: 'Diego B. Fernandez', title: 'Post 4', text: 'Texto do Post 4', publicationDate: '05/05/2013', highlightImage: 'http://fakeimg.pl/222x180/', category: 'Teste' }
-                        , { id: '126', author: 'Diego B. Fernandez', title: 'Post 4', text: 'Texto do Post 4', publicationDate: '05/05/2013', highlightImage: 'http://fakeimg.pl/222x180/', category: 'Teste' }
-                        ]
-                });
-            }, 2000);
-
-            return deferred.promise;
-        }
-
-        function loadPost(postID) {
-            
+            return $http.get(resourcePath);
         }
 
         return {
-            loadBlog: loadBlog,
+            loadBlog: loadBlog
+        };
+    }]);
+
+    module.factory('blogDB.post', ['$http', '$q', '$timeout', function ($http, $q, $timeout) {
+        var resourcePath = webService.url + '/post';
+
+        function loadPosts() {
+            return $http.get(resourcePath);
+        }
+
+        function loadPost(postID) {
+            return $http.get(resourcePath + '/' + postID);
+        }
+
+        function createPost(post) {
+            return $http.post(resourcePath, post);
+        }
+
+        return {
             loadPosts: loadPosts,
-            loadPost: loadPost
+            loadPost: loadPost,
+            createPost: createPost
         };
     }]);
 

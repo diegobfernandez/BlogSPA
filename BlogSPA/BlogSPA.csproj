@@ -83,8 +83,6 @@
     <Content Include="app\blog\admin\blogAdmin.js" />
     <Content Include="app\blog\blog-view.tpl.html" />
     <Content Include="app\blog\blog.js" />
-    <Content Include="app\dashboard\dashboard.js" />
-    <Content Include="app\dashboard\dashboard.tpl.html" />
     <Content Include="app\_layout\header.tpl.html" />
     <Content Include="app\_layout\notifications.tpl.html" />
     <Content Include="commom\services\blogDatabase.js" />

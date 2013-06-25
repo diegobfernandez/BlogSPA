@@ -17,7 +17,7 @@
 <body ng-controller="AppController">
     <div class="content">
         <div ng-include="'app/_layout/notifications.tpl.html'" ng-show="notifications.getCurrent().length"></div>
-        <div ng-include="'app/_layout/header.tpl.html'"></div>    
+        <div ng-include="'app/_layout/header.tpl.html'"></div>
         <main ng-view></main>
     </div>
     <%: Scripts.Render("~/bundle/libs") %>
